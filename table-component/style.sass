@@ -1,0 +1,187 @@
+/// devTasks
+  - List figure out how to orgnaize code better
+  - Sticky Sub-header: fix 
+  - Tooltip
+
+
+//-------------- dL-0
+
+//- devSanity variables (comment-out & remove before processing)
+
+.sci-table
+  font-size: 18px
+  font-family: lato
+  
+//- designer variables  
+
+//- IMPORTANT: all parentDivs must have overflow unset
+// #compare\/specs 
+//   & .Index-page-content
+//     padding: 0
+//     & .sqs-block .code-block .sqs-block-code
+//       width: 100%
+//       padding: 0
+  // overflow: unset
+  
+
+$header-height: 150px
+$main-color: #143957
+$shade-color: #266CA6
+$accent-color: #E37E3B
+$dark-gray: #303030
+$medium-gray: #BEBEBE
+$light-gray: #d3d3d3
+$white: #fff
+$negative-color: red
+$positive-color: green
+// $neutral-color:
+$default-cell-color: $white
+
+
+/// dL-1 developer variables & mixins 
+  
+%symbol  
+  font-size: 1.2em  
+  
+  
+/// dL-2 main module & webBlock
+.sci-table
+  width: 100%
+  height: 100%
+  overflow: hidden
+  
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+  &:hover 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+  
+  .viewport
+    //div
+    // width: 90vw
+    height: 80vh
+    overflow: scroll
+      
+    table 
+      border-collapse: collapse
+      // box-shadow: 10px 10px 10px $dark-gray
+      // width: 100%
+      table-layout: fixed
+      height: 100%
+      
+      // border-width: 5px 5px 5px 5px
+      // border-style: solid
+      // border-color: $dark-gray
+
+
+      thead
+
+        color: white
+
+        tr
+          background-color: $main-color
+
+          th
+            // - cell
+            text-align: center
+            height: $header-height
+            padding: 0 20px
+
+            //- row
+            position: sticky
+            top: 0
+            z-index: 100
+
+            // max-height: 10%
+
+            background-color: $main-color  
+
+
+      tbody 
+
+          tr
+            //- defaultAll
+            td 
+              text-align: center   
+
+              //- td
+              &.col-header
+                background-color: lighten($main-color, 20%)
+                color: $white
+                text-align: left
+
+                position: sticky
+                left: 0
+
+            //- tr
+            &.data-row
+              // background-color: green           
+
+              //- tr.data-row
+              &:hover
+                background-color: $light-gray
+
+              td
+                //- td
+                &.col-header
+                  padding: 15px 30px
+
+
+
+
+            //- tr             
+            &.sub-header-row
+              td
+                background-color: lighten($main-color, 10%)
+                position: sticky
+                top: $header-height
+                z-index: 80
+                // height: 50px
+
+                /*td*/
+                &.col-header
+                    z-index: 90
+                    white-space: nowrap
+                    font-weight: bold
+                    padding: 15px 15px
+
+
+            
+/// dL-3 helper classes
+
+// .sub-header
+//   // background-color: red
+//   &:hover 
+//     // background-color: null
+
+  td
+    padding: 15px null null 30px
+    text-align: center 
+    background-color: blue
+    
+    &:first-child
+      color: $white
+      text-align: left
+              
+      position: sticky
+      left: 20px
+
+.x-no
+  @extend %symbol
+  color: $negative-color
+
+.check-yes
+  @extend %symbol
+  color: $positive-color
+
+.positive
+  // color: $positive-color
+  // font-size: 1.2em
+  font-style: italic
+  // text-decoration: underline
+  // text-transform: uppercase
+     
+.na
+  font-style: italic
+  color: $medium-gray
+  font-size: 0.8em
+  
